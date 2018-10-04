@@ -20,9 +20,30 @@ Biggest thing would be that a change to one wouldn't change the others, so any c
 once on the page woul require an update.
 That'd probably be fine. I don't think we do that at all actually.
 
+Apollo:
+  local and remote
 
-Be careful how you implement pulls from database. You want to pull all Users, then all Vritues, and then link them. There are tools in Apollo and V
-The
+Prisma
+  Uses graphql but has no concept of access control, so you'd need some other grapql layer (like Apollo) above it, on the server.
+
+redux
+  not graphql, but local system state. So, helpful for caching and undo and whatnot
+
+relay
+  Uses graphql, has parts of redux. Seems useful. Apparently powerful, high learning curve, not as customizeable as Apollo.
+  https://stackoverflow.com/questions/38036543/difference-between-redux-and-relay
+  Relay is downloaded a good 10x as often as Apollo and 3 times as often as prisma
+    https://www.npmtrends.com/apollo-server-vs-graphql-yoga-vs-prisma-vs-relay-runtime
+
+Be careful how you implement pulls from database. You want to pull all Users, then all Vritues, and then link them. There are tools in Apollo and Relay
+that let you cache responses and such, as well as even (in the case of redux) allowing supposedly plug -and-play undo/redo.
+    https://github.com/omnidan/redux-undo
+    https://www.prisma.io/blog/relay-vs-apollo-comparing-graphql-clients-for-react-apps-b40af58c1534/
+
+access control exists in Apollo
+  https://www.apollographql.com/docs/guides/access-control.html
+
+
 
 Note that exclamation points in the schema mean that field is non-nullable.
 
